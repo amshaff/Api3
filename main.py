@@ -1,16 +1,21 @@
-# This is a sample Python script.
-
-# Press Shift+F1 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import requests
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def get_data_from_website():
+    url = 'https://www.kukry.ru/disc/pub19'
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        # Извлечение заголовка страницы
+        start_index = response.text.find('<title>') + len('<title>')
+        end_index = response.text.find('</title>', start_index)
+        title = response.text[start_index:end_index]
+
+        return title
+    else:
+        return 'Error: Unable to fetch data from the website'
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Пример запуска функции и вывод результата
+data = get_data_from_website()
+print(data)
