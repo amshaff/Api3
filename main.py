@@ -1,8 +1,15 @@
 import requests
 
 
+print ("17-Кукрыниксы; 18-Расскрашенная душа; "
+       "19-Cтолкновение; 20-Фаворит солнца; "
+       "21-Шаман; 22 - ХХХ; 23-Всадники света; "
+       "24-MYSELF; 25-Горшенев-Есенин Душа Поэта; "
+       "26-Горшенев-Есенин Смерть поэта; 232-Сингл Экклезиаст;"
+       " 354-Вера, Надежда, Любовь; 622-Артист;")
 def get_data_from_website():
-    url = 'https://www.kukry.ru/disc/pub19'
+    num = int(input())
+    url = f'https://www.kukry.ru/disc/pub{num}'
     response = requests.get(url)
 
     if response.status_code == 200:
