@@ -18,11 +18,11 @@ def get_data_from_website():
         end_index = response.text.find('</title>', start_index)
         title = response.text[start_index:end_index]
 
-        return title
+        return [title, url]
     else:
         return 'Error: Unable to fetch data from the website'
 
 
 # Пример запуска функции и вывод результата
 data = get_data_from_website()
-print(data)
+print(*data, sep='\n')
